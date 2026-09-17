@@ -36,10 +36,7 @@ MARK_END = "// END AUTO-GENERATED"
 # Article titles pinned to the top of the newsroom, in this order. They stay on
 # top even when older than the newest clips, and are marked as pinned. Each must
 # match the "Title:" header of a file in articles/ exactly.
-PINNED = [
-    "Barnstable County Entomologist Breaks Down Tick Risks, Offers Safety Tips",
-    "Nancy Jack Todd Leaves Legacy Of Ecological Sustainability",
-]
+PINNED = []
 
 # ------------------------------------------------------------------ helpers ---
 def slugify(title):
