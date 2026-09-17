@@ -18,8 +18,8 @@
 
   var NAV = [
     ["home",       "Front Page",       "index.html"],
-    ["writing",    "Writing",          "writing.html"],
     ["newsroom",   "Newsroom",         "newsroom.html"],
+    ["writing",    "Writing",          "writing.html"],
     ["experience", "Experience",       "experience.html"],
     ["about",      "About & Contact",  "about.html"]
   ];
