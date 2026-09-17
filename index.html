@@ -65,9 +65,24 @@
   function link(w){ return w.page ? w.page : (w.file || '#'); }
   function clipLink(c){ return c.page || c.url || '#'; }
 
-  // ---- Feature carousel (newsroom clips: pinned first, then the newest) ----
+  // ---- Feature carousel (newsroom clips: five random picks, refreshed daily) ----
+  function dailyRandomPicks(list, n){
+    var today = new Date();
+    var dateKey = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+    var seed = 0;
+    for(var i=0;i<dateKey.length;i++){ seed = (seed*31 + dateKey.charCodeAt(i)) | 0; }
+    seed = seed >>> 0;
+    function rand(){ seed = (seed*1103515245 + 12345) & 0x7fffffff; return seed / 0x7fffffff; }
+    var pool = list.slice();
+    for(var j=pool.length-1;j>0;j--){
+      var k = Math.floor(rand()*(j+1));
+      var tmp = pool[j]; pool[j] = pool[k]; pool[k] = tmp;
+    }
+    return pool.slice(0, n);
+  }
+
   (function(){
-    var featured = JOURNALISM.slice(0, 5);
+    var featured = dailyRandomPicks(JOURNALISM, 5);
     var featuredWrap = document.getElementById('featured');
     var dotsWrap = document.getElementById('dots');
     var rail = document.getElementById('rail');
