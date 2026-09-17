@@ -113,6 +113,7 @@ PAGE = """<!DOCTYPE html>
     <h1>{title}</h1>
     <p class="venue">By {byline}</p>
     <div class="article-meta">{date}</div>
+    <a class="btn solid" href="{url}" target="_blank" rel="noopener" style="display:inline-block;margin-top:14px">Click here to view original publication in the Enterprise</a>
   </div>
 
   <article class="prose">
@@ -120,7 +121,6 @@ PAGE = """<!DOCTYPE html>
   </article>
 
   <div class="article-foot">
-    <a class="btn solid" href="{url}" target="_blank" rel="noopener">Originally published by the Enterprise</a>
     <a class="btn" href="../newsroom.html">&larr; All newsroom</a>
   </div>
 </main>
