@@ -38,6 +38,14 @@
     if (PAGE === "home") {
       var today = new Date().toLocaleDateString("en-US",
         { weekday: "long", year: "numeric", month: "long", day: "numeric" });
+
+      // Approximate day/night by Eastern-time hour (6am-6pm counts as daytime).
+      var etHour = parseInt(new Date().toLocaleString("en-US",
+        { timeZone: "America/New_York", hour: "2-digit", hour12: false }), 10);
+      var etTime = new Date().toLocaleTimeString("en-US",
+        { timeZone: "America/New_York", hour: "numeric", minute: "2-digit" });
+      var skyIcon = (etHour >= 6 && etHour < 18) ? "☀" : "☾";
+
       return '' +
         '<div class="wrap"><header>' +
           furniture +
@@ -47,7 +55,7 @@
           '</div>' +
           '<div class="dateline">' +
             '<span>Today Is <b>' + today + '</b></span>' +
-            '<span>Established MMXXVI</span>' +
+            '<span>' + skyIcon + ' ' + etTime + ' ET</span>' +
           '</div>' +
         '</header></div>' +
         navHtml();
