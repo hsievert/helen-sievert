@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>From the Newsroom · Helen Sievert</title>
-<meta name="description" content="Journalism by Helen Sievert: clips from The Bourne Enterprise and its sister editions on Cape Cod.">
+<meta name="description" content="Journalism by Helen Sievert: clips from the Enterprise on Cape Cod.">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,7 +18,7 @@
 <div class="wrap">
   <section id="journalism">
     <div class="section-head"><h2>From the Newsroom</h2><span class="meta">Journalism</span></div>
-    <p class="page-intro">Helen writes and copy-edits for the Enterprise newspapers on Cape Cod. Published clips are collected here.</p>
+    <p class="page-intro">Helen writes and copy-edits for the Enterprise, published clips are collected here.</p>
     <div id="journalism-body"></div>
   </section>
 </div>
@@ -36,7 +36,7 @@
     box.innerHTML =
       '<div class="news-empty">' +
         '<span class="stamp">Coming Soon</span>' +
-        '<p>Selected clips from <b>The Bourne Enterprise</b> and its sister editions (<em>The Falmouth</em>, <em>Sandwich</em>, and <em>Mashpee Enterprise</em>) will be posted here as they are collected.</p>' +
+        '<p>Selected clips from <b>the Enterprise</b> will be posted here as they are collected.</p>' +
       '</div>';
   } else {
     box.innerHTML = '<div class="clip-list">' + JOURNALISM.map(function(c){
@@ -48,8 +48,10 @@
       var srcParts = [c.publication, c.date];
       if (c.coauthors) srcParts.push('with '+c.coauthors);
       var src = srcParts.filter(Boolean).map(esc).join(' · ');
-      return '<article class="clip-item">' +
-        (src?'<div class="src">'+src+'</div>':'') +
+      var pin = c.pinned ? '<span class="pin">Pinned</span>' : '';
+      var srcLine = (pin || src) ? '<div class="src">'+pin+(pin&&src?' · ':'')+src+'</div>' : '';
+      return '<article class="clip-item'+(c.pinned?' pinned':'')+'">' +
+        srcLine +
         '<h3>'+titleHtml+'</h3>' +
         (c.blurb?'<p>'+esc(c.blurb)+'</p>':'') +
       '</article>';
